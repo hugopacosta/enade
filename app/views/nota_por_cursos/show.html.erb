@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Faculdade:</strong>
+  <%= @nota_por_curso.faculdade_id %>
+</p>
+
+<p>
+  <strong>Curso:</strong>
+  <%= @nota_por_curso.curso_id %>
+</p>
+
+<p>
+  <strong>Nota:</strong>
+  <%= @nota_por_curso.nota %>
+</p>
+
+<p>
+  <strong>Media alunos:</strong>
+  <%= @nota_por_curso.media_alunos %>
+</p>
+
+<%= link_to 'Edit', edit_nota_por_curso_path(@nota_por_curso) %> |
+<%= link_to 'Back', nota_por_cursos_path %>

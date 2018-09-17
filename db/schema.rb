@@ -10,11 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180917161817) do
+ActiveRecord::Schema.define(version: 20180917194524) do
+
+  create_table "cursos", force: :cascade do |t|
+    t.text "nome_do_curso"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "faculdades", force: :cascade do |t|
     t.string "nome"
-    t.float "nota_geral"
+    t.float "nota"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nota_por_cursos", force: :cascade do |t|
+    t.integer "faculdade_id"
+    t.integer "curso_id"
+    t.float "nota"
+    t.float "media_alunos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

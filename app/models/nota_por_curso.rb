@@ -1,0 +1,2 @@
+class NotaPorCurso < ApplicationRecord
+end

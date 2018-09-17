@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nome: MyString
+  faculdade_id: 1
+  curso_id: 1
   nota: 1.5
+  media_alunos: 1.5
 
 two:
-  nome: MyString
+  faculdade_id: 1
+  curso_id: 1
   nota: 1.5
+  media_alunos: 1.5

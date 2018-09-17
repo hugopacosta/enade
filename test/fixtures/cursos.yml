@@ -1,9 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nome: MyString
-  nota: 1.5
+  nome_do_curso: MyText
 
 two:
-  nome: MyString
-  nota: 1.5
+  nome_do_curso: MyText

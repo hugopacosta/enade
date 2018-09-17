@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Nota Por Cursos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Faculdade</th>
+      <th>Curso</th>
+      <th>Nota</th>
+      <th>Media alunos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nota_por_cursos.each do |nota_por_curso| %>
+      <tr>
+        <td><%= nota_por_curso.faculdade_id %></td>
+        <td><%= nota_por_curso.curso_id %></td>
+        <td><%= nota_por_curso.nota %></td>
+        <td><%= nota_por_curso.media_alunos %></td>
+        <td><%= link_to 'Show', nota_por_curso %></td>
+        <td><%= link_to 'Edit', edit_nota_por_curso_path(nota_por_curso) %></td>
+        <td><%= link_to 'Destroy', nota_por_curso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nota Por Curso', new_nota_por_curso_path %>
