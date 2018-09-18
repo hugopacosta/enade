@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :faculdade_id %>
-    <%= form.number_field :faculdade_id, id: :nota_por_curso_faculdade_id %>
+    <%= form.collection_select :faculdade_id, Faculdade.order(:nome), :id, :nome, include_blank: true %>
   </div>
 
   <div class="field">
     <%= form.label :curso_id %>
-    <%= form.number_field :curso_id, id: :nota_por_curso_curso_id %>
+    <%= form.collection_select :curso_id, Curso.order(:nome_do_curso), :id, :nome_do_curso, include_blank: true %>
   </div>
 
   <div class="field">

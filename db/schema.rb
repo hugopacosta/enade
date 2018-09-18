@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180917194524) do
+ActiveRecord::Schema.define(version: 20180918190802) do
 
   create_table "cursos", force: :cascade do |t|
     t.text "nome_do_curso"
@@ -29,9 +29,10 @@ ActiveRecord::Schema.define(version: 20180917194524) do
     t.integer "faculdade_id"
     t.integer "curso_id"
     t.float "nota"
-    t.float "media_alunos"
+    t.decimal "media_alunos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["faculdade_id", "curso_id"], name: "index_nota_por_cursos_on_faculdade_id_and_curso_id", unique: true
   end
 
 end

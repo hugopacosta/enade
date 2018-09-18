@@ -28,7 +28,7 @@ class FaculdadesController < ApplicationController
 
     respond_to do |format|
       if @faculdade.save
-        format.html { redirect_to @faculdade, notice: 'Faculdade was successfully created.' }
+        format.html { redirect_to @faculdade, notice: 'Faculdade criada com sucesso!' }
         format.json { render :show, status: :created, location: @faculdade }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class FaculdadesController < ApplicationController
   def update
     respond_to do |format|
       if @faculdade.update(faculdade_params)
-        format.html { redirect_to @faculdade, notice: 'Faculdade was successfully updated.' }
+        format.html { redirect_to @faculdade, notice: 'Faculdade editada com sucesso!' }
         format.json { render :show, status: :ok, location: @faculdade }
       else
         format.html { render :edit }

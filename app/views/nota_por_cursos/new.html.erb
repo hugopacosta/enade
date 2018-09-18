@@ -1,5 +1,23 @@
 <h1>New Nota Por Curso</h1>
 
+
 <%= render 'form', nota_por_curso: @nota_por_curso %>
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<style type="text/css">
+  .alert-success{
+    color: green;
+  }
+  .alert-danger{
+    color: red;
+  }
+</style>
+
 
 <%= link_to 'Back', nota_por_cursos_path %>

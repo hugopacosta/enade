@@ -1,10 +1,16 @@
 class NotaPorCursosController < ApplicationController
   before_action :set_nota_por_curso, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotUnique, with: :faculdade_curso_existem
 
   # GET /nota_por_cursos
   # GET /nota_por_cursos.json
+
   def index
-    @nota_por_cursos = NotaPorCurso.all
+    if params[:media_alunos]
+      @nota_por_cursos = NotaPorCurso.where('media_alunos = ?', "%#{params[:media_alunos]}%")
+    else
+      @nota_por_cursos = NotaPorCurso.all
+    end
   end
 
   # GET /nota_por_cursos/1
@@ -25,7 +31,6 @@ class NotaPorCursosController < ApplicationController
   # POST /nota_por_cursos.json
   def create
     @nota_por_curso = NotaPorCurso.new(nota_por_curso_params)
-
     respond_to do |format|
       if @nota_por_curso.save
         format.html { redirect_to @nota_por_curso, notice: 'Nota por curso was successfully created.' }
@@ -51,17 +56,17 @@ class NotaPorCursosController < ApplicationController
     end
   end
 
-  # DELETE /nota_por_cursos/1
-  # DELETE /nota_por_cursos/1.json
+  # DELETE /ponies/1
+  # DELETE /ponies/1.json
   def destroy
-    @nota_por_curso.destroy
+    @faculdade.destroy
     respond_to do |format|
-      format.html { redirect_to nota_por_cursos_url, notice: 'Nota por curso was successfully destroyed.' }
+      format.html { redirect_to faculdades_url, notice: 'Faculdade was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-  private
+ private
     # Use callbacks to share common setup or constraints between actions.
     def set_nota_por_curso
       @nota_por_curso = NotaPorCurso.find(params[:id])
@@ -71,4 +76,9 @@ class NotaPorCursosController < ApplicationController
     def nota_por_curso_params
       params.require(:nota_por_curso).permit(:faculdade_id, :curso_id, :nota, :media_alunos)
     end
+
+    def faculdade_curso_existem
+      redirect_back(fallback_location: root_path, alert: "Já existem notas cadastradas para esta combinação de faculdade e curso!")
+    end
+
 end
