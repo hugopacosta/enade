@@ -6,11 +6,10 @@ class NotaPorCursosController < ApplicationController
   # GET /nota_por_cursos.json
 
   def index
-    if params[:media_alunos]
-      @nota_por_cursos = NotaPorCurso.where('media_alunos = ?', "%#{params[:media_alunos]}%")
-    else
-      @nota_por_cursos = NotaPorCurso.all
-    end
+    @nota_por_cursos = NotaPorCurso.all
+    @nota_por_cursos = @nota_por_cursos.busca_faculdade(params[:nome_faculdade]) if params[:nome_faculdade].present?
+    @nota_por_cursos = @nota_por_cursos.busca_curso(params[:nome_curso]) if params[:nome_curso].present?
+    @nota_por_cursos = @nota_por_cursos.media_acima(params[:media]) if params[:media].present?
   end
 
   # GET /nota_por_cursos/1
@@ -74,7 +73,7 @@ class NotaPorCursosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nota_por_curso_params
-      params.require(:nota_por_curso).permit(:faculdade_id, :curso_id, :nota, :media_alunos)
+      params.require(:nota_por_curso).permit(:faculdade_id, :curso_id, :nota, :media_alunos, :media, :nome_faculdade, :nome_curso)
     end
 
     def faculdade_curso_existem

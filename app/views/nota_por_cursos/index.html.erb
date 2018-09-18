@@ -2,6 +2,21 @@
 
 <h1>Performance - ENADE</h1>
 
+<%= form_tag(nota_por_cursos_path, method: :get) do %>
+  Busca por Faculdade: <%= text_field_tag :nome_faculdade,params[:nome_faculdade] %>
+  <%= submit_tag 'Buscar', name: nil %>
+<% end %>
+
+<%= form_tag(nota_por_cursos_path, method: :get) do %>
+  Busca por Curso: <%= text_field_tag :nome_curso,params[:nome_curso] %>
+  <%= submit_tag 'Buscar', name: nil %>
+<% end %>
+
+<%= form_tag(nota_por_cursos_path, method: :get) do %>
+  Media Acima De: <%= number_field_tag :media,params[:media] %>
+  <%= submit_tag 'Buscar', name: nil %>
+<% end %>
+
 <table>
   <thead>
     <tr>
