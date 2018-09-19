@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180918190802) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cursos", force: :cascade do |t|
     t.text "nome_do_curso"
     t.datetime "created_at", null: false

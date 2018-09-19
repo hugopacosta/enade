@@ -13,7 +13,7 @@ class NotaPorCurso < ApplicationRecord
 
   def self.busca_faculdade(nome_faculdade)
     if nome_faculdade
-      joins(:faculdade).where('LOWER(nome) LIKE ?', "%#{nome_faculdade}%")
+      joins(:faculdade).where('LOWER(nome) ILIKE ?', "%#{nome_faculdade}%")
     else
       all
     end
@@ -21,7 +21,7 @@ class NotaPorCurso < ApplicationRecord
 
   def self.busca_curso(nome_curso)
     if nome_curso
-      joins(:curso).where('LOWER(nome_do_curso) LIKE ?', "%#{nome_curso}%")
+      joins(:curso).where('LOWER(nome_do_curso) ILIKE ?', "%#{nome_curso}%")
     else
       all
     end
