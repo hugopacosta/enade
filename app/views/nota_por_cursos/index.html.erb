@@ -25,7 +25,7 @@
       Busca por Faculdade</label>
       <div class="control-label col-sm-2">
         <%= form_tag(nota_por_cursos_path, method: :get) do %>
-        <%= text_field_tag :nome_faculdade,params[:nome_faculdade], :class => 'form-control' %>
+        <%= text_field_tag :nome_faculdade,params[:nome_faculdade].to_s, :class => 'form-control' %>
         <%= submit_tag 'Buscar', :class => "w3-button w3-red w3-padding-large w3-hover-dark-red", name: nil %>
         <% end %>
       </div>
