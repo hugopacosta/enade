@@ -1,0 +1,28 @@
+<div id="results">
+  <div>
+    <%= page_entries_info @nota_por_cursos %>
+  </div>
+  <table class = 'w3-table w3-striped w3-border w3-hoverable'>
+    <tr>
+      <th>Nome do Faculdade</th>
+      <th>Curso</th>
+      <th>Nota Geral</th>
+      <th>Nota do Curso</th>
+      <th>Média dos Alunos</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% nota_por_cursos.each do |nota_por_curso| %>
+      <tr>
+        <td><%= link_to nota_por_curso.faculdade.nome, edit_faculdade_path(nota_por_curso.faculdade) %></td>
+        <td><%= link_to nota_por_curso.curso.nome_do_curso, edit_curso_path(nota_por_curso.curso) %></td>
+        <td><%= nota_por_curso.faculdade.nota %></td>
+        <td><%= nota_por_curso.nota %></td>
+        <td><%= nota_por_curso.media_alunos %></td>
+        <td><%= link_to 'Editar', edit_nota_por_curso_path(nota_por_curso) %></td>
+        <td><%= link_to 'Deletar', nota_por_curso, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= will_paginate @nota_por_cursos %>
+</div>

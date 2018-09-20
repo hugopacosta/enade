@@ -3,27 +3,39 @@ class NotaPorCurso < ApplicationRecord
   belongs_to :faculdade, optional: true
   belongs_to :curso, optional: true
 
-  def self.media_acima(media)
-    if media
-      where('media_alunos > ?', "#{media}")
-    else
-      all
-    end
-  end
+  self.per_page = 10
 
-  def self.busca_faculdade(nome_faculdade)
-    if nome_faculdade
-      joins(:faculdade).where('LOWER(nome) ILIKE ?', "%#{nome_faculdade}%")
-    else
-      all
-    end
-  end
+  filterrific(
+    default_filter_params: { sorted_by: 'created_at_desc' },
+    available_filters: [
+      :sorted_by,
+      :busca_faculdade,
+      :busca_curso,
+      :media_acima
+    ]
+  )
 
-  def self.busca_curso(nome_curso)
-    if nome_curso
-      joins(:curso).where('LOWER(nome_do_curso) ILIKE ?', "%#{nome_curso}%")
+  scope :sorted_by, lambda { |sort_option|
+    # extract the sort direction from the param value.
+    direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
+    case sort_option.to_s
+    when /^created_at_/
+      order("nota_por_cursos.created_at #{ direction }")
     else
-      all
+      raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
     end
-  end
+  }
+
+  scope :media_acima, lambda { |media|
+    where('media_alunos >= ?', media)
+  }
+
+  scope :busca_faculdade, lambda { |nome|
+    where('faculdades.nome ILIKE ?', "%#{nome}%").joins(:faculdade)
+  }
+
+  scope :busca_curso, lambda { |curso_ids|
+    where(:curso_id => [*curso_ids])
+  }
+
 end

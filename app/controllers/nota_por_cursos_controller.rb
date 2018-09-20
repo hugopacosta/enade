@@ -6,11 +6,25 @@ class NotaPorCursosController < ApplicationController
   # GET /nota_por_cursos.json
 
   def index
-    @nota_por_cursos = NotaPorCurso.all
-    @nota_por_cursos = @nota_por_cursos.busca_faculdade(params[:nome_faculdade]) if params[:nome_faculdade].present?
-    @nota_por_cursos = @nota_por_cursos.busca_curso(params[:nome_curso]) if params[:nome_curso].present?
-    @nota_por_cursos = @nota_por_cursos.media_acima(params[:media]) if params[:media].present?
+    @filterrific = initialize_filterrific(
+      NotaPorCurso,
+      params[:filterrific],
+      :select_options => {
+        busca_curso: Curso.options_for_select
+      }
+    ) or return
+    @nota_por_cursos = @filterrific.find.page(params[:page])
+
+
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
+
+
+
 
   # GET /nota_por_cursos/1
   # GET /nota_por_cursos/1.json
@@ -65,19 +79,19 @@ class NotaPorCursosController < ApplicationController
     end
   end
 
- private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_nota_por_curso
-      @nota_por_curso = NotaPorCurso.find(params[:id])
-    end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_nota_por_curso
+    @nota_por_curso = NotaPorCurso.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def nota_por_curso_params
-      params.require(:nota_por_curso).permit(:faculdade_id, :curso_id, :nota, :media_alunos, :media, :nome_faculdade, :nome_curso)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def nota_por_curso_params
+    params.require(:nota_por_curso).permit(:faculdade_id, :curso_id, :nota, :media_alunos, :media, :nome_faculdade, :nome_curso)
+  end
 
-    def faculdade_curso_existem
-      redirect_back(fallback_location: root_path, alert: "Já existem notas cadastradas para esta combinação de faculdade e curso!")
-    end
+  def faculdade_curso_existem
+    redirect_back(fallback_location: root_path, alert: "Já existem notas cadastradas para esta combinação de faculdade e curso!")
+  end
 
 end
