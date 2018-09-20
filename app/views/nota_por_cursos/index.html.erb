@@ -3,45 +3,62 @@
     <%= stylesheet_link_tag 'w3' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <div class="w3-main" style="margin-left:350px;margin-right:40px">
-      <div style="margin-bottom:50px;margin-top:60px">
-        <h2 class="text-center">ENADE</h2>
+      <div style="margin-bottom:35px;margin-top:50px">
+        <h2 class="text-center w3-xxxlarge w3-text-red"><b>ENADE</b></h2>
         <h4 class="text-center">Lista de performance no ENADE</h4>
       </div>
-      <div>
+      <div class='w3-container w3-light-gray'>
+        <div style="margin-bottom:35px">
+          <h1 class="w3-xxlarge w3-text-red"><b>Filtros</b></h1>
+          <hr style="width:45px;border:3px solid red;margin-top:-4px" class="w3-round">
+        </div>
         <%= form_for_filterrific @filterrific, html: {class: "form-inline"} do |f| %>
-          <div class = 'form-group' style ="margin-right:30px">
-            <label for="inp" class="inp">
-              <input class="filterrific-periodically-observed" type="text" name="filterrific[busca_faculdade]" id="filterrific_busca_faculdade" placeholder="&nbsp;" />
-              <span class="label">Faculdade</span>
-              <span class="border"></span>
-            </label>
+          <div style='margin-left:10px'>
+            <div class = 'form-group' style ="margin-right:40px">
+              <label for="inp" class="inp">
+                <input class="filterrific-periodically-observed" type="text" name="filterrific[busca_faculdade]" id="filterrific_busca_faculdade" placeholder="&nbsp;" />
+                <span class="label">Faculdade</span>
+                <span class="border"></span>
+              </label>
+            </div>
+            <div class = 'form-group' style ="margin-right:40px">
+              <label for="inp" class="inp">
+                <input class="filterrific-periodically-observed" type="text" name="filterrific[busca_curso]" id="filterrific_busca_curso" placeholder="&nbsp;" />
+                <span class="label">Curso</span>
+                <span class="border"></span>
+              </label>
+            </div>
+            <div class = 'form-group' style ="margin-right:40px">
+              <label for="inp" class="inp">
+                <input class="filterrific-periodically-observed" type="text" name="filterrific[nota_geral_acima]" id="filterrific_nota_geral_acima" placeholder="&nbsp;" />
+                <span class="label">Nota Geral Maior Que:</span>
+                <span class="border"></span>
+              </label>
+            </div>
+            <div class = 'form-group' style ="margin-right:40px">
+              <label for="inp" class="inp">
+                <input class="filterrific-periodically-observed" type="text" name="filterrific[nota_curso_acima]" id="filterrific_nota_curso_acima" placeholder="&nbsp;" />
+                <span class="label">Nota do Curso Maior Que:</span>
+                <span class="border"></span>
+              </label>
+            </div>
+            <div class = 'form-group' style ="margin-right:40px">
+              <label for="inp" class="inp">
+                <input class="filterrific-periodically-observed" type="text" name="filterrific[media_acima]" id="filterrific_media_acima" placeholder="&nbsp;" />
+                <span class="label">Média dos Alunos Maior Que:</span>
+                <span class="border"></span>
+              </label>
+            </div>
           </div>
-          <div class = 'form-group' style ="margin-right:30px">
-            <label for="inp" class="inp">
-              <input class="filterrific-periodically-observed" type="text" name="filterrific[busca_curso]" id="filterrific_busca_curso" placeholder="&nbsp;" />
-              <span class="label">Curso</span>
-              <span class="border"></span>
-            </label>
-          </div>
-          <div class = 'form-group' style ="margin-right:30px">
-            <label for="inp" class="inp">
-              <input class="filterrific-periodically-observed" type="text" name="filterrific[nota_geral_acima]" id="filterrific_nota_geral_acima" placeholder="&nbsp;" />
-              <span class="label">Nota Geral Maior Que:</span>
-              <span class="border"></span>
-            </label>
-          </div>
-          <div class = 'form-group'>
+          <div class = 'form-group w3-right' style ="margin-top:20px;margin-bottom:20px">
             Ordenados por:
-            <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
-          </div>
-          <div>
-            <%#= link_to( 'Reset filters', reset_filterrific_url, ) %>
+            <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by],class: "select") %>
           </div>
           <%# add an automated spinner to your form when the list is refreshed %>
         <% end %>
-        <%= render( partial: 'nota_por_cursos/list', locals: { nota_por_cursos: @nota_por_cursos } ) %>
-        <%= link_to('Inserir Nota', new_nota_por_curso_path,:class => "w3-button w3-hover-white") %>
       </div>
+      <%= render( partial: 'nota_por_cursos/list', locals: { nota_por_cursos: @nota_por_cursos } ) %>
+      <%= link_to('Inserir Nota', new_nota_por_curso_path,:class => "w3-button w3-hover-white") %>
     </div>
   </body>
 </html>

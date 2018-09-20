@@ -12,7 +12,8 @@ class NotaPorCurso < ApplicationRecord
       :busca_faculdade,
       :busca_curso,
       :media_acima,
-      :nota_geral_acima
+      :nota_geral_acima,
+      :nota_curso_acima
     ]
   )
 
@@ -52,6 +53,10 @@ class NotaPorCurso < ApplicationRecord
 
   scope :nota_geral_acima, lambda { |nota|
     where('faculdades.nota >= ?', nota).joins(:faculdade)
+  }
+
+  scope :nota_curso_acima, lambda { |nota|
+    where('nota_por_cursos.nota >= ?', nota)
   }
 
   def self.options_for_sorted_by
