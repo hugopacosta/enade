@@ -10,13 +10,10 @@ class NotaPorCursosController < ApplicationController
       NotaPorCurso,
       params[:filterrific],
       :select_options => {
-        busca_curso: Curso.options_for_select
+        sorted_by: NotaPorCurso.options_for_sorted_by,
       }
     ) or return
     @nota_por_cursos = @filterrific.find.page(params[:page])
-
-
-
     respond_to do |format|
       format.html
       format.js
@@ -87,7 +84,7 @@ class NotaPorCursosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def nota_por_curso_params
-    params.require(:nota_por_curso).permit(:faculdade_id, :curso_id, :nota, :media_alunos, :media, :nome_faculdade, :nome_curso)
+    params.require(:nota_por_curso).permit(:faculdade_id, :curso_id, :nota, :media_alunos, :media, :nome, :nome_curso)
   end
 
   def faculdade_curso_existem
