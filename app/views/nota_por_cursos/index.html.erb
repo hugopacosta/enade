@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <div class="w3-main" style="margin-left:350px;margin-right:40px">
       <div style="margin-bottom:35px;margin-top:50px">
-        <h2 class="text-center w3-xxxlarge w3-text-red"><b>ENADE</b></h2>
+        <h1 class="text-center w3-xxxlarge w3-text-red"><b>ENADE</b></h1>
         <h4 class="text-center">Lista de performance no ENADE</h4>
       </div>
       <div class='w3-container w3-light-gray'>
@@ -31,33 +31,37 @@
             <div class = 'form-group' style ="margin-right:40px">
               <label for="inp" class="inp">
                 <input class="filterrific-periodically-observed" type="text" name="filterrific[nota_geral_acima]" id="filterrific_nota_geral_acima" placeholder="&nbsp;" />
-                <span class="label">Nota Geral Maior Que:</span>
+                <span class="label">Nota Geral Maior que</span>
                 <span class="border"></span>
               </label>
             </div>
             <div class = 'form-group' style ="margin-right:40px">
               <label for="inp" class="inp">
                 <input class="filterrific-periodically-observed" type="text" name="filterrific[nota_curso_acima]" id="filterrific_nota_curso_acima" placeholder="&nbsp;" />
-                <span class="label">Nota do Curso Maior Que:</span>
+                <span class="label">Nota do Curso Maior que</span>
                 <span class="border"></span>
               </label>
             </div>
             <div class = 'form-group' style ="margin-right:40px">
               <label for="inp" class="inp">
                 <input class="filterrific-periodically-observed" type="text" name="filterrific[media_acima]" id="filterrific_media_acima" placeholder="&nbsp;" />
-                <span class="label">Média dos Alunos Maior Que:</span>
+                <span class="label">Média dos Alunos Maior que</span>
                 <span class="border"></span>
               </label>
             </div>
           </div>
-          <div class = 'form-group w3-right' style ="margin-top:30px;margin-bottom:20px;margin-right:70px">
+          <div class = 'form-group' style ="margin-top:25px;margin-bottom:20px;margin-left:30px">
             <label>Ordenados por:</label>
             <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
           </div>
         <% end %>
       </div>
-      <%= render( partial: 'nota_por_cursos/list', locals: { nota_por_cursos: @nota_por_cursos } ) %>
-      <%= link_to('Inserir Nota', new_nota_por_curso_path,:class => "w3-button w3-hover-white") %>
+      <div style="margin-top:20px;margin-bottom:55px;margin-right:15px">
+        <%= button_to "Inserir Notas", new_nota_por_curso_path, :class => "w3-button w3-block w3-red w3-hover-dark-red w3-form-insere-notas-btn w3-right", :method => :get %>
+      </div>
+      <div>
+        <%= render( partial: 'nota_por_cursos/list', locals: { nota_por_cursos: @nota_por_cursos } ) %>
+      </div>
     </div>
   </body>
 </html>

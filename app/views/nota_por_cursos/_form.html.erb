@@ -1,37 +1,31 @@
 <%= form_with(model: nota_por_curso, local: true) do |form| %>
   <% if nota_por_curso.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(nota_por_curso.errors.count, "error") %> prohibited this nota_por_curso from being saved:</h2>
-
+      <h2><%= pluralize(nota_por_curso.errors.count, "erro") %> no cadastro da nota:</h2>
       <ul>
-      <% nota_por_curso.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% nota_por_curso.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  <div class="field-div">
     <%= form.label :faculdade_id %>
-    <%= form.collection_select :faculdade_id, Faculdade.order(:nome), :id, :nome, include_blank: true %>
+    <%= form.collection_select(:faculdade_id, Faculdade.order(:nome), :id, :nome, {include_blank: true},{:class=>'field'})%>
   </div>
-
-  <div class="field">
+  <div class="field-div">
     <%= form.label :curso_id %>
-    <%= form.collection_select :curso_id, Curso.order(:nome_do_curso), :id, :nome_do_curso, include_blank: true %>
+    <%= form.collection_select(:curso_id, Curso.order(:nome_do_curso), :id, :nome_do_curso, {include_blank: true}, {:class=>'field'}) %>
   </div>
-
-  <div class="field">
+  <div class="field-div">
     <%= form.label :nota %>
-    <%= form.text_field :nota, id: :nota_por_curso_nota %>
+    <%= form.text_field :nota, id: :nota_por_curso_nota, :class => 'field'  %>
   </div>
-
-  <div class="field">
+  <div class="field-div">
     <%= form.label :media_alunos %>
-    <%= form.text_field :media_alunos, id: :nota_por_curso_media_alunos %>
+    <%= form.text_field :media_alunos, id: :nota_por_curso_media_alunos, :class => 'field'  %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions" style="margin-top:30px;margin-left:20px">
+    <%= form.submit("Salvar notas",{:class=>"w3-button w3-block w3-red w3-hover-dark-red w3-form-submit-btn"})%>
   </div>
 <% end %>

@@ -20,9 +20,6 @@ class NotaPorCursosController < ApplicationController
     end
   end
 
-
-
-
   # GET /nota_por_cursos/1
   # GET /nota_por_cursos/1.json
   def show
@@ -43,7 +40,7 @@ class NotaPorCursosController < ApplicationController
     @nota_por_curso = NotaPorCurso.new(nota_por_curso_params)
     respond_to do |format|
       if @nota_por_curso.save
-        format.html { redirect_to @nota_por_curso, notice: 'Nota por curso was successfully created.' }
+        format.html { redirect_to @nota_por_curso, notice: 'Notas inseridas com sucesso!' }
         format.json { render :show, status: :created, location: @nota_por_curso }
       else
         format.html { render :new }
@@ -57,7 +54,7 @@ class NotaPorCursosController < ApplicationController
   def update
     respond_to do |format|
       if @nota_por_curso.update(nota_por_curso_params)
-        format.html { redirect_to @nota_por_curso, notice: 'Nota por curso was successfully updated.' }
+        format.html { redirect_to @nota_por_curso, notice: 'Notas atualizadas com sucesso!' }
         format.json { render :show, status: :ok, location: @nota_por_curso }
       else
         format.html { render :edit }
@@ -66,12 +63,12 @@ class NotaPorCursosController < ApplicationController
     end
   end
 
-  # DELETE /ponies/1
-  # DELETE /ponies/1.json
+  # DELETE /nota_por_cursos/1
+  # DELETE /nota_por_cursos/1.json
   def destroy
-    @faculdade.destroy
+    @nota_por_curso.destroy
     respond_to do |format|
-      format.html { redirect_to faculdades_url, notice: 'Faculdade was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Notas deletadas com sucesso!' }
       format.json { head :no_content }
     end
   end

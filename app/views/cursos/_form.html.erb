@@ -1,22 +1,19 @@
 <%= form_with(model: curso, local: true) do |form| %>
   <% if curso.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(curso.errors.count, "error") %> prohibited this curso from being saved:</h2>
-
+      <h2><%= pluralize(curso.errors.count, "erro") %> no cadastro do curso:</h2>
       <ul>
-      <% curso.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% curso.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= form.label :nome_do_curso %>
     <%= form.text_area :nome_do_curso, id: :curso_nome_do_curso %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions" style="margin-top:30px;margin-left:10px">
+    <%= form.submit("Cadastrar Curso",{:class=>"w3-button w3-block w3-red w3-hover-dark-red w3-form-submit-btn"})%>
   </div>
 <% end %>

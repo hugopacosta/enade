@@ -3,6 +3,10 @@ class NotaPorCurso < ApplicationRecord
   belongs_to :faculdade, optional: true
   belongs_to :curso, optional: true
 
+  validates :faculdade_id, uniqueness: { scope: :curso_id }
+  validates :nota, numericality: { greater_than_or_equal_to: 0, message:"deve ser maior que 0" }
+  validates :media_alunos, numericality: { greater_than_or_equal_to: 0, message:"deve ser maior que 0" }
+
   self.per_page = 10
 
   filterrific(

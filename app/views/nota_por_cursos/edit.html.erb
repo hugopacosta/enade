@@ -1,6 +1,19 @@
-<h1>Editing Nota Por Curso</h1>
-
-<%= render 'form', nota_por_curso: @nota_por_curso %>
-
-<%= link_to 'Show', @nota_por_curso %> |
-<%= link_to 'Back', nota_por_cursos_path %>
+<html>
+  <body>
+    <%= stylesheet_link_tag 'w3' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div class="w3-main" style="margin-left:350px;margin-right:40px">
+      <div style="margin-bottom:35px;margin-top:50px">
+        <h2 class="text-center w3-xxxlarge w3-text-red"><b>ENADE</b></h2>
+        <h4 class="text-center">Lista de performance no ENADE</h4>
+      </div>
+      <div style="margin-bottom:35px">
+        <h1 class="w3-xxxlarge w3-text-red"><b>Inserir Notas</b></h1>
+        <hr style="width:50px;border:5px solid red;margin-top:-4px" class="w3-round">
+      </div>
+      <div>
+        <%= render 'form', nota_por_curso: @nota_por_curso %>
+      </div>
+    </div>
+  </body>
+</html>

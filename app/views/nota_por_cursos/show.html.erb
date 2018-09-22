@@ -1,24 +1,37 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Faculdade:</strong>
-  <%= @nota_por_curso.faculdade_id %>
-</p>
-
-<p>
-  <strong>Curso:</strong>
-  <%= @nota_por_curso.curso_id %>
-</p>
-
-<p>
-  <strong>Nota:</strong>
-  <%= @nota_por_curso.nota %>
-</p>
-
-<p>
-  <strong>Media alunos:</strong>
-  <%= @nota_por_curso.media_alunos %>
-</p>
-
-<%= link_to 'Edit', edit_nota_por_curso_path(@nota_por_curso) %> |
-<%= link_to 'Back', nota_por_cursos_path %>
+<html>
+  <body>
+    <%= stylesheet_link_tag 'w3' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div class="w3-main" style="margin-left:350px;margin-right:40px">
+      <div style="margin-bottom:35px;margin-top:50px">
+        <h2 class="text-center w3-xxxlarge w3-text-red"><b>ENADE</b></h2>
+        <h4 class="text-center">Lista de performance no ENADE</h4>
+      </div>
+      <div style="margin-bottom:35px">
+        <h1 class="w3-xxxlarge w3-text-red"><b>
+            <p id="notice"><%= notice %></p>
+          </b></h1>
+        <hr style="width:50px;border:5px solid red;margin-top:-4px" class="w3-round">
+      </div>
+      <p>
+        <strong>Faculdade:</strong>
+        <%= @nota_por_curso.faculdade.nome %>
+      </p>
+      <p>
+        <strong>Curso:</strong>
+        <%= @nota_por_curso.curso.nome_do_curso %>
+      </p>
+      <p>
+        <strong>Nota:</strong>
+        <%= @nota_por_curso.nota %>
+      </p>
+      <p>
+        <strong>Media alunos:</strong>
+        <%= @nota_por_curso.media_alunos %>
+      </p>
+      <div style="margin-top:30px">
+        <%= button_to "Página Inicial", root_path, :class => "w3-button w3-block w3-red w3-hover-dark-red w3-form-submit-btn", :method => :get %>
+      </div>
+    </div>
+  </body>
+</html>

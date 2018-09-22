@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180918190802) do
+ActiveRecord::Schema.define(version: 20180922003934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180918190802) do
 
   create_table "faculdades", force: :cascade do |t|
     t.string "nome"
-    t.float "nota"
+    t.decimal "nota"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180918190802) do
   create_table "nota_por_cursos", force: :cascade do |t|
     t.integer "faculdade_id"
     t.integer "curso_id"
-    t.float "nota"
+    t.decimal "nota"
     t.decimal "media_alunos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -28,7 +28,7 @@ class FaculdadesController < ApplicationController
 
     respond_to do |format|
       if @faculdade.save
-        format.html { redirect_to @faculdade, notice: 'Faculdade criada com sucesso!' }
+        format.html { redirect_to @faculdade, notice: 'Faculdade cadastrada com sucesso!' }
         format.json { render :show, status: :created, location: @faculdade }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class FaculdadesController < ApplicationController
   def update
     respond_to do |format|
       if @faculdade.update(faculdade_params)
-        format.html { redirect_to @faculdade, notice: 'Faculdade editada com sucesso!' }
+        format.html { redirect_to @faculdade, notice: 'Faculdade atualizada com sucesso!' }
         format.json { render :show, status: :ok, location: @faculdade }
       else
         format.html { render :edit }
@@ -56,19 +56,19 @@ class FaculdadesController < ApplicationController
   def destroy
     @faculdade.destroy
     respond_to do |format|
-      format.html { redirect_to faculdades_url, notice: 'Faculdade was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Faculdade deletada com sucesso!' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_faculdade
-      @faculdade = Faculdade.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_faculdade
+    @faculdade = Faculdade.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def faculdade_params
-      params.require(:faculdade).permit(:nome, :nota)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def faculdade_params
+    params.require(:faculdade).permit(:nome, :nota)
+  end
 end
