@@ -13,18 +13,18 @@ Step-by-step guide to get the ENADE performance list up and running locally:
 
 Make sure everything is running smoothly before you proceed!
 
+Create the folder where you are going to clone this repository and enter this command line from inside it:
 
+$ git clone https://github.com/hugopacosta/enade.git
 
-* Configuration
+Change directory to the newly created "enade" folder and type in the following commands:
 
-* Database creation
+$ rails db:migrate
 
-* Database initialization
+Wait until the migration is completed, and finally type in:
 
-* How to run the test suite
+$ rails server
 
-* Services (job queues, cache servers, search engines, etc.)
+Everything is set!
 
-* Deployment instructions
-
-* ...
+To access the application enter this URL on your favorite browser: http://localhost:3000/
