@@ -29,4 +29,4 @@ Everything is set!
 
 To access the application enter this URL on your favorite browser: http://localhost:3000/
 
-*Heroku Application link :https://fathomless-earth-35095.herokuapp.com/*
+*Heroku Application: https://fathomless-earth-35095.herokuapp.com/*
