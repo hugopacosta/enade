@@ -4,7 +4,7 @@
   </div>
   <table class = 'w3-table w3-striped w3-border w3-hoverable'>
     <tr>
-      <th>Nome da Faculdade</th>
+      <th>Nome da Universidade</th>
       <th>Nome do Curso</th>
       <th>Nota Geral</th>
       <th>Nota do Curso</th>
@@ -14,9 +14,9 @@
     </tr>
     <% nota_por_cursos.each do |nota_por_curso| %>
       <tr>
-        <td><%= link_to nota_por_curso.faculdade.nome, edit_faculdade_path(nota_por_curso.faculdade) %></td>
+        <td><%= link_to nota_por_curso.universidade.nome, edit_universidade_path(nota_por_curso.universidade) %></td>
         <td><%= link_to nota_por_curso.curso.nome_do_curso, edit_curso_path(nota_por_curso.curso) %></td>
-        <td><%= nota_por_curso.faculdade.nota %></td>
+        <td><%= nota_por_curso.universidade.nota %></td>
         <td><%= nota_por_curso.nota %></td>
         <td><%= nota_por_curso.media_alunos %></td>
         <td><%= link_to 'Editar', edit_nota_por_curso_path(nota_por_curso) %></td>

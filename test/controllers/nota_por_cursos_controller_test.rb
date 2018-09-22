@@ -17,7 +17,7 @@ class NotaPorCursosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create nota_por_curso" do
     assert_difference('NotaPorCurso.count') do
-      post nota_por_cursos_url, params: { nota_por_curso: { curso_id: @nota_por_curso.curso_id, faculdade_id: @nota_por_curso.faculdade_id, media_alunos: @nota_por_curso.media_alunos, nota: @nota_por_curso.nota } }
+      post nota_por_cursos_url, params: { nota_por_curso: { curso_id: @nota_por_curso.curso_id, universidade_id: @nota_por_curso.universidade_id, media_alunos: @nota_por_curso.media_alunos, nota: @nota_por_curso.nota } }
     end
 
     assert_redirected_to nota_por_curso_url(NotaPorCurso.last)
@@ -34,7 +34,7 @@ class NotaPorCursosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update nota_por_curso" do
-    patch nota_por_curso_url(@nota_por_curso), params: { nota_por_curso: { curso_id: @nota_por_curso.curso_id, faculdade_id: @nota_por_curso.faculdade_id, media_alunos: @nota_por_curso.media_alunos, nota: @nota_por_curso.nota } }
+    patch nota_por_curso_url(@nota_por_curso), params: { nota_por_curso: { curso_id: @nota_por_curso.curso_id, universidade_id: @nota_por_curso.universidade_id, media_alunos: @nota_por_curso.media_alunos, nota: @nota_por_curso.nota } }
     assert_redirected_to nota_por_curso_url(@nota_por_curso)
   end
 

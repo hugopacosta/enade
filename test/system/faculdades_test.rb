@@ -1,9 +1,9 @@
 require "application_system_test_case"
 
-class FaculdadesTest < ApplicationSystemTestCase
+class UniversidadesTest < ApplicationSystemTestCase
   # test "visiting the index" do
-  #   visit faculdades_url
+  #   visit universidades_url
   #
-  #   assert_selector "h1", text: "Faculdade"
+  #   assert_selector "h1", text: "Universidade"
   # end
 end

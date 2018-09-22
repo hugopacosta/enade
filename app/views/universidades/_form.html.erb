@@ -1,0 +1,23 @@
+<%= form_with(model: universidade, local: true) do |form| %>
+  <% if universidade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(universidade.errors.count, "erro") %> no cadastro da universidade:</h2>
+      <ul>
+        <% universidade.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field-div">
+    <%= form.label :nome %>
+    <%= form.text_field :nome, id: :universidade_nome %>
+  </div>
+  <div class="field-div">
+    <%= form.label :nota %>
+    <%= form.text_field :nota, id: :universidade_nota %>
+  </div>
+  <div class="actions" style="margin-top:30px;margin-left:10px">
+    <%= form.submit("Cadastrar Universidade",{:class=>"w3-button w3-block w3-red w3-hover-dark-red w3-form-submit-btn"})%>
+  </div>
+<% end %>

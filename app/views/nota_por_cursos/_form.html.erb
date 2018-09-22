@@ -10,19 +10,19 @@
     </div>
   <% end %>
   <div class="field-div">
-    <%= form.label :faculdade_id %>
-    <%= form.collection_select(:faculdade_id, Faculdade.order(:nome), :id, :nome, {include_blank: true},{:class=>'field'})%>
+    <%= form.label :universidade_id %>
+    <%= form.collection_select(:universidade_id, Universidade.order(:nome), :id, :nome, {:class=>'field'})%>
   </div>
   <div class="field-div">
     <%= form.label :curso_id %>
-    <%= form.collection_select(:curso_id, Curso.order(:nome_do_curso), :id, :nome_do_curso, {include_blank: true}, {:class=>'field'}) %>
+    <%= form.collection_select(:curso_id, Curso.order(:nome_do_curso), :id, :nome_do_curso, {:class=>'field'}) %>
   </div>
   <div class="field-div">
-    <%= form.label :nota %>
+    <%= form.label "Nota do Curso" %>
     <%= form.text_field :nota, id: :nota_por_curso_nota, :class => 'field'  %>
   </div>
   <div class="field-div">
-    <%= form.label :media_alunos %>
+    <%= form.label "Média dos alunos" %>
     <%= form.text_field :media_alunos, id: :nota_por_curso_media_alunos, :class => 'field'  %>
   </div>
   <div class="actions" style="margin-top:30px;margin-left:20px">

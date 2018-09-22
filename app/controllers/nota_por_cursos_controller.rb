@@ -1,6 +1,6 @@
 class NotaPorCursosController < ApplicationController
   before_action :set_nota_por_curso, only: [:show, :edit, :update, :destroy]
-  rescue_from ActiveRecord::RecordNotUnique, with: :faculdade_curso_existem
+  rescue_from ActiveRecord::RecordNotUnique, with: :universidade_curso_existem
 
   # GET /nota_por_cursos
   # GET /nota_por_cursos.json
@@ -81,11 +81,11 @@ class NotaPorCursosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def nota_por_curso_params
-    params.require(:nota_por_curso).permit(:faculdade_id, :curso_id, :nota, :media_alunos, :media, :nome, :nome_curso)
+    params.require(:nota_por_curso).permit(:universidade_id, :curso_id, :nota, :media_alunos, :media, :nome, :nome_curso)
   end
 
-  def faculdade_curso_existem
-    redirect_back(fallback_location: root_path, alert: "Já existem notas cadastradas para esta combinação de faculdade e curso!")
+  def universidade_curso_existem
+    redirect_back(fallback_location: root_path, alert: "Já existem notas cadastradas para esta combinação de universidade e curso!")
   end
 
 end

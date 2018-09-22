@@ -8,14 +8,14 @@
         <h4 class="text-center">Lista de performance no ENADE</h4>
       </div>
       <div style="margin-bottom:35px">
-        <h1 class="w3-xxxlarge w3-text-red"><b>Cadastrar Faculdade</b></h1>
+        <h1 class="w3-xxxlarge w3-text-red"><b>Cadastrar Universidade</b></h1>
         <hr style="width:50px;border:5px solid red;margin-top:-4px" class="w3-round">
       </div>
       <div>
-        <%= render 'form', faculdade: @faculdade %>
+        <%= render 'form', universidade: @universidade %>
       </div>
       <div style="margin-top:30px">
-        <%= link_to 'Remover a Faculdade', @faculdade, method: :delete, data: { confirm: 'Tem certeza? Todas as notas cadastradas para esta faculdade serão excluídas!' } %>
+        <%= link_to 'Remover a Universidade', @universidade, method: :delete, data: { confirm: 'Tem certeza? Todas as notas cadastradas para esta universidade serão excluídas!' } %>
       </div>
     </div>
   </body>

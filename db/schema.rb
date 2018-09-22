@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180922003934) do
+ActiveRecord::Schema.define(version: 20180922020318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,21 +21,21 @@ ActiveRecord::Schema.define(version: 20180922003934) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "faculdades", force: :cascade do |t|
-    t.string "nome"
-    t.decimal "nota"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "nota_por_cursos", force: :cascade do |t|
-    t.integer "faculdade_id"
+    t.integer "universidade_id"
     t.integer "curso_id"
     t.decimal "nota"
     t.decimal "media_alunos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["faculdade_id", "curso_id"], name: "index_nota_por_cursos_on_faculdade_id_and_curso_id", unique: true
+    t.index ["universidade_id", "curso_id"], name: "index_nota_por_cursos_on_universidade_id_and_curso_id", unique: true
+  end
+
+  create_table "universidades", force: :cascade do |t|
+    t.string "nome"
+    t.decimal "nota"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
