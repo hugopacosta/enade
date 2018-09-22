@@ -1,4 +1,5 @@
 class UniversidadesController < ApplicationController
+  before_action :fix_fields
   before_action :set_universidade, only: [:show, :edit, :update, :destroy]
 
   # GET /universidades
@@ -70,5 +71,11 @@ class UniversidadesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def universidade_params
     params.require(:universidade).permit(:nome, :nota)
+  end
+
+  def fix_fields
+    if params[:universidade].present?
+      params[:universidade][:nota] = params[:universidade][:nota].to_s.gsub(',', '.').to_f
+    end
   end
 end

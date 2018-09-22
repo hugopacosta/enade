@@ -1,4 +1,5 @@
 class NotaPorCursosController < ApplicationController
+  before_action :fix_fields
   before_action :set_nota_por_curso, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotUnique, with: :universidade_curso_existem
 
@@ -73,6 +74,7 @@ class NotaPorCursosController < ApplicationController
     end
   end
 
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_nota_por_curso
@@ -88,4 +90,12 @@ class NotaPorCursosController < ApplicationController
     redirect_back(fallback_location: root_path, alert: "Já existem notas cadastradas para esta combinação de universidade e curso!")
   end
 
+  def fix_fields
+    if params[:nota_por_curso].present?
+      params[:nota_por_curso][:nota] = params[:nota_por_curso][:nota].to_s.gsub(',', '.').to_f
+    end
+    if params[:nota_por_curso].present?
+      params[:nota_por_curso][:media_alunos] = params[:nota_por_curso][:media_alunos].to_s.gsub(',', '.').to_f
+    end
+  end
 end

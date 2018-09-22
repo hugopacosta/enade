@@ -1,5 +1,4 @@
 class NotaPorCurso < ApplicationRecord
-
   belongs_to :universidade, optional: true
   belongs_to :curso, optional: true
 
@@ -75,5 +74,4 @@ class NotaPorCurso < ApplicationRecord
       ['Menor Média dos Alunos', 'media_asc']
     ]
   end
-
 end
